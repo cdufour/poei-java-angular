@@ -1,0 +1,4 @@
+<button (click)="testAjax()">Test ajax</button>
+<div *ngFor="let image of images">
+  <img [src]="image.thumbnailUrl" [alt]="image.title">
+</div>
