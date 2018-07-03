@@ -1,3 +1,5 @@
+<app-intro></app-intro>
+
 <button (click)="test()">Test</button>
 <span>{{compteur}}</span>
 <p *ngIf="compteur == 10">Basta !!!</p>
@@ -9,10 +11,14 @@
 
 <input type="checkbox" (click)="highlightStudents()"><span>Bons étudiants</span>
 <select (change)="selectGroup($event)">
+  <option value="0">Sélectionner un groupe</option>
   <option *ngFor="let group of groups">{{group}}</option>
 </select>
 <table class="table table-bordered table-striped">
-  <tr *ngFor="let student of students">
+  <tr
+    *ngFor="let student of students"
+    [ngStyle]="{'display':student.group == selectedGroup || selectedGroup == '0'  ? 'table-row' : 'none'}"
+    >
     <td>
       <img class="student" [src]="student.image" [alt]="student.lastname">
     </td>
