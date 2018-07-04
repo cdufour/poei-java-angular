@@ -40,8 +40,21 @@ export class StudentComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeNote() {
+  changeNote(studentId: number, indexNote: number) {
+    console.log('studentId: ' + studentId + ', indexNote: ' + indexNote);
+
+    //this.student.notes[indexNote] = 
+
+    // notification à destination du parent
     this.changeEmitter.emit(null);
+  }
+
+  getAverage(notes: number[]): number {
+    let total: number = 0;
+    notes.forEach(note => {
+      total += note;
+    })
+    return total / notes.length;
   }
 
   testAjax() {

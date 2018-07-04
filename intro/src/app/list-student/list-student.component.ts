@@ -9,6 +9,7 @@ import { StudentService } from '../services/student.service';
 export class ListStudentComponent implements OnInit {
   students: any[] = [];
   editMode: boolean = false;
+  generalAverage: number = 0;
 
   constructor(private studentService: StudentService) { }
 
@@ -18,7 +19,19 @@ export class ListStudentComponent implements OnInit {
       .getStudents()
       .subscribe(res => {
         this.students = res;
-        console.log(this.students);
+
+        // calcul de la moyenne générale
+        let total = 0;
+        let nbNotes = 0;
+        this.students.forEach(student => {
+          //console.log(student.notes);
+          student.notes.forEach(note => {
+            total += note;
+          })
+          nbNotes += student.notes.length;
+        })
+        this.generalAverage = total / nbNotes;
+
       });
   }
 
