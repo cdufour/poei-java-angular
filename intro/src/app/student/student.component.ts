@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 // import d'opérateurs propres à la version 6 de Rxjs
@@ -23,6 +23,11 @@ export class StudentComponent implements OnInit {
     group: '',
   };
 
+  @Input() editMode: boolean = false;
+
+  // la propriété changeNode reçoit un objet de type EventEmitter
+  @Output() changeEmitter: EventEmitter<any> = new EventEmitter();
+
   constructor(private http: HttpClient) {
     //this.http = new HttpClient;
     // Injection dépendance
@@ -36,7 +41,7 @@ export class StudentComponent implements OnInit {
   }
 
   changeNote() {
-    console.log('change note');
+    this.changeEmitter.emit(null);
   }
 
   testAjax() {

@@ -8,6 +8,7 @@ import { StudentService } from '../services/student.service';
 })
 export class ListStudentComponent implements OnInit {
   students: any[] = [];
+  editMode: boolean = false;
 
   constructor(private studentService: StudentService) { }
 
@@ -19,7 +20,14 @@ export class ListStudentComponent implements OnInit {
         this.students = res;
         console.log(this.students);
       });
+  }
 
+  changeEditMode(e) {
+    this.editMode = !this.editMode;
+  }
+
+  noteChange() {
+    console.log('Mon enfant me parle');
   }
 
 }

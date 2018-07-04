@@ -13,9 +13,14 @@
     <table>
       <tr *ngFor="let note of student.notes; index as i">
         <td>Note {{ i+1 }}</td>
-        <td><strong>{{ note }} / 20</strong></td>
+        <td>
+          <strong *ngIf="!editMode">{{ note }}</strong>
+          <input class="note" *ngIf="editMode" [value]="note">
+          <span> / 20</span>
+        </td>
         <td>
           <button
+            *ngIf="editMode"
             (click)="changeNote()"
             class="btn btn-primary btn-sm">Modifier</button>
         </td>
