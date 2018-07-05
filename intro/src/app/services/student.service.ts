@@ -16,6 +16,10 @@ export class StudentService {
     return parseFloat(nb.toFixed(precision));
   }
 
+  getStudent(id: number) {
+    return this.http.get(this.urlServer + '/students/' + id);
+  }
+
   getStudents() {
     // renvoie Observable, la souscription se fera côté composant
     return this.http.get(this.urlServer + '/students');

@@ -158,7 +158,19 @@ app.use(function(req, res, next) {
 
 // get
 app.get('/teams', (req, res) => res.json(teams));
+
 app.get('/students', (req, res) => res.json(students));
+app.get('/students/:id', (req, res) => {
+  let id = req.params.id;
+  for (let i=0; i<students.length; i++) {
+    if (students[i].id == id) {
+      return res.json(students[i])
+    }
+  }
+  res.status(404).send('Etudiant inconnu');
+});
+
+
 app.get('/players', (req, res) => res.json(players));
 app.get('/teams/:team/players', (req, res) => {
   var team = req.params.team;

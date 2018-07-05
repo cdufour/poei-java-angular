@@ -12,11 +12,14 @@ import { ListStudentComponent } from './list-student/list-student.component';
 // services
 import { StudentService } from './services/student.service';
 import { MenuComponent } from './menu/menu.component';
+import { DetailStudentComponent } from './detail-student/detail-student.component';
 
 // table de routage
 const appRoutes: Routes = [
+  { path: '', component: ListStudentComponent },
   { path: 'intro', component: IntroComponent },
-  { path: 'students', component: ListStudentComponent }
+  { path: 'students', component: ListStudentComponent },
+  { path: 'students/:id', component: DetailStudentComponent },
 ];
 
 @NgModule({
@@ -25,7 +28,8 @@ const appRoutes: Routes = [
     IntroComponent,
     StudentComponent,
     ListStudentComponent,
-    MenuComponent
+    MenuComponent,
+    DetailStudentComponent
   ],
   imports: [
     BrowserModule,
