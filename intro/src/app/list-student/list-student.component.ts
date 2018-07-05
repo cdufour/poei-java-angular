@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../services/student.service';
+import { Student } from '../../model/student.interface';
 
 @Component({
   selector: 'app-list-student',
@@ -7,7 +8,7 @@ import { StudentService } from '../services/student.service';
   styleUrls: ['./list-student.component.css']
 })
 export class ListStudentComponent implements OnInit {
-  students: any[] = [];
+  students: Student[] = [];
   editMode: boolean = false;
   generalAverage: number = 0;
 
@@ -17,8 +18,10 @@ export class ListStudentComponent implements OnInit {
   ngOnInit() {
     this.studentService
       .getStudents()
-      .subscribe(res => {
+      .subscribe((res: Student[]) => {
         this.students = res;
+        this.studentService.setStudents(res);
+        console.log(this.studentService.getGeneralAverage());
 
         // calcul de la moyenne générale
         let total = 0;

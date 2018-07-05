@@ -113,7 +113,7 @@ var students = [
       image: 'https://www.thehindu.com/sport/football/article18590831.ece/alternates/FREE_300/Paulo%20Dybala',
       firstname: 'Paolo',
       lastname: 'Dybala',
-      notes: [14, 5, 7],
+      notes: [13, 5, 7],
       group: 'POEI Java'
     },
     {
