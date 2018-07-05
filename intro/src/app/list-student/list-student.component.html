@@ -17,5 +17,6 @@
 <div class="container">
   <app-student
     *ngFor="let student of students"
-    [data]="student" [editMode]="editMode" (changeEmitter)="noteChange()"></app-student>
+    [data]="student" [editMode]="editMode"
+    (changeEmitter)="noteChange()"></app-student>
 </div>

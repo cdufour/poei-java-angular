@@ -38,4 +38,14 @@ export class StudentService {
     );
 
   }
+
+  getAverage(notes: number[]): number {
+    return this.round(
+      notes.reduce((total: number, val: number) => total + val) / notes.length
+    );
+  }
+
+  updateStudent(id: number, student: Student) {
+    return this.http.put(`${this.urlServer}/students/${id}`, student);
+  }
 }

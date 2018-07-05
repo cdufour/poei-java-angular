@@ -155,6 +155,8 @@ app.use(function(req, res, next) {
 });
 
 // Routes
+
+// get
 app.get('/teams', (req, res) => res.json(teams));
 app.get('/students', (req, res) => res.json(students));
 app.get('/players', (req, res) => res.json(players));
@@ -164,6 +166,7 @@ app.get('/teams/:team/players', (req, res) => {
   return res.json(playersFiltered);
 })
 
+// post
 app.post('/teams', function(req, res) {
   var id = getLastId(teams);
   var team = {
@@ -179,6 +182,12 @@ app.post('/teams', function(req, res) {
   teams.push(team);
   res.json(team);
 })
+
+// put
+app.put('/students/:id', (req, res) => {
+  res.json('ok');
+})
+
 
 // Helper functions
 function getLastId(arr) {

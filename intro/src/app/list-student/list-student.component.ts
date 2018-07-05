@@ -21,20 +21,7 @@ export class ListStudentComponent implements OnInit {
       .subscribe((res: Student[]) => {
         this.students = res;
         this.studentService.setStudents(res);
-        console.log(this.studentService.getGeneralAverage());
-
-        // calcul de la moyenne générale
-        let total = 0;
-        let nbNotes = 0;
-        this.students.forEach(student => {
-          //console.log(student.notes);
-          student.notes.forEach(note => {
-            total += note;
-          })
-          nbNotes += student.notes.length;
-        })
-        this.generalAverage = total / nbNotes;
-
+        this.generalAverage = this.studentService.getGeneralAverage();
       });
   }
 
@@ -43,7 +30,8 @@ export class ListStudentComponent implements OnInit {
   }
 
   noteChange() {
-    console.log('Mon enfant me parle');
+    //console.log('Mon enfant me parle');
+    this.generalAverage = this.studentService.getGeneralAverage();
   }
 
 }
