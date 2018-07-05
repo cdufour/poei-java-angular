@@ -143,7 +143,7 @@ var students = [
 ]
 
 // Middlewares
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // le body des requêtes sont parsées (json -> js)
 //app.use(express.static('public'));
 
 // Permet les requêtes cross-domain
@@ -185,7 +185,17 @@ app.post('/teams', function(req, res) {
 
 // put
 app.put('/students/:id', (req, res) => {
-  res.json('ok');
+  // mise à jour de l'étudiant ciblé
+  if (req.body.id) {
+    for(let i=0; i<students.length; i++) {
+      if (students[i].id == req.body.id) {
+        students[i] = req.body; // mise à jour
+        break; // on sort de la boucle
+      }
+    }
+    return res.json('mise à jour réussie');
+  }
+  res.status(500).send('Erreur'); // envoie du code erreur au client
 })
 
 
