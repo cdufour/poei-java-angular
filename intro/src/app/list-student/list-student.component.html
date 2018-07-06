@@ -12,11 +12,18 @@
     <div class="col-md-4">
     </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="container">
+        <app-student
+          *ngFor="let student of students"
+          [data]="student" [editMode]="editMode"
+          (changeEmitter)="noteChange()"></app-student>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <app-add-student-form></app-add-student-form>
+    </div>
+  </div>
 
-<div class="container">
-  <app-student
-    *ngFor="let student of students"
-    [data]="student" [editMode]="editMode"
-    (changeEmitter)="noteChange()"></app-student>
 </div>

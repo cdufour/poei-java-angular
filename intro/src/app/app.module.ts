@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 // composants
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { ListStudentComponent } from './list-student/list-student.component';
 import { StudentService } from './services/student.service';
 import { MenuComponent } from './menu/menu.component';
 import { DetailStudentComponent } from './detail-student/detail-student.component';
+import { AddStudentFormComponent } from './add-student-form/add-student-form.component';
 
 // table de routage
 const appRoutes: Routes = [
@@ -29,12 +31,14 @@ const appRoutes: Routes = [
     StudentComponent,
     ListStudentComponent,
     MenuComponent,
-    DetailStudentComponent
+    DetailStudentComponent,
+    AddStudentFormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]

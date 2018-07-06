@@ -1,3 +1,2 @@
-<div *ngIf="student">
-  <h3>{{ student.firstname }}</h3>
-</div>
+<!-- le bindind se fera que si student ne vaut pas null -->
+<h3 *ngIf="student">{{ student.firstname }}</h3>
